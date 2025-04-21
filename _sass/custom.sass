@@ -1,0 +1,30 @@
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+[data-aos] {
+  opacity: 0;
+  transition: opacity 0.8s;
+  &.aos-animate { opacity: 1; }
+}
+
+// Skill bars
+.skill-bar {
+  background: #eee;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  .skill-level {
+    background: #2ecc71;
+    height: 100%;
+    animation: fill 1.5s ease-out;
+  }
+}
+
+// Hover effects
+.project-card {
+  transition: transform 0.3s;
+  &:hover { transform: translateY(-5px); }
+}
