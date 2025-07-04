@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-4">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4">Your Name</h1>
+    <p class="text-xl md:text-2xl mb-8">Your tagline goes here</p>
+    <a href="#gallery" class="text-blue-600 underline">View my work ↓</a>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-16 px-4 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-8 text-center">Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Example images -->
+      <img src="https://via.placeholder.com/600" alt="Example" class="w-full object-cover rounded-lg fade-in"/>
+      <img src="https://via.placeholder.com/600" alt="Example" class="w-full object-cover rounded-lg fade-in"/>
+      <img src="https://via.placeholder.com/600" alt="Example" class="w-full object-cover rounded-lg fade-in"/>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="py-16 px-4 max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-4">Resume</h2>
+    <p class="mb-6">You can view or download my resume below.</p>
+    <a href="resume.pdf" download class="inline-block bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">Download Resume</a>
+  </section>
+
+  <script>
+    // Intersection Observer for fade-in
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+</body>
+</html>
