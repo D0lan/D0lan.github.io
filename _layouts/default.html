@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS animation library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome (for optional icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vpNPlZHkprg0YqXKx0Me1OvrHrjvZyaPTsVM1Mr6y+phYYOqWD+Y/xF4oLLX7ENHgHnCsFexwYJDzXexFqKdZg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"/>
 </head>
-<body class="bg-white text-gray-900 font-sans">
-  {{ content }}
+<body>
+  <!-- Rain effect container.  Dynamic drops are inserted via JS in script.js.  The data-bg attribute holds the background image used for the rain simulation. -->
+  <div id="rain-container" data-bg="{{ '/assets/images/foggy_forest.jpg' | relative_url }}" aria-hidden="true"></div>
+  <!-- Top navigation bar. It slides down when the user hovers near the top. -->
+  <header class="top-nav">
+    <div class="nav-inner">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="nav-links">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/about' | relative_url }}">About</a>
+        <a href="{{ '/projects' | relative_url }}">Projects</a>
+        <a href="{{ '/album' | relative_url }}">Album</a>
+        <a href="{{ '/blog' | relative_url }}">Blog</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Side navigation. It slides in from the left when the mouse nears the left edge. -->
+  <aside class="side-nav">
+    <nav class="side-links">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about' | relative_url }}">About</a>
+      <a href="{{ '/projects' | relative_url }}">Projects</a>
+      <a href="{{ '/album' | relative_url }}">Album</a>
+      <a href="{{ '/blog' | relative_url }}">Blog</a>
+    </nav>
+  </aside>
+  <!-- Main content area for individual pages -->
+  <main class="content">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. All rights reserved.</p>
+  </footer>
+  <!-- AOS animation library script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+  </script>
+  <!-- RainyDay.js library for realistic raindrop simulation -->
+  <script src="{{ '/assets/js/rainyday.min.js' | relative_url }}"></script>
+  <!-- Main javascript -->
+  <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>

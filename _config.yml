@@ -1,4 +1,41 @@
-title: Aryan Pandey
-description: "showcasing stuff"
-baseurl: "" # leave this blank if deploying at root
-url: "https://aryanpan.de"
+---
+# Site configuration for the Jekyll‑powered personal website.
+# These variables are referenced throughout the templates to
+# centralise your site settings.
+
+# Basic information
+title: "Aryan's Personal Site"
+email: ""
+author: "Aryan"
+description: >-
+  A multi‑faceted personal website built for both career and personal use.
+  Aryan is a researcher in neuromorphic computing who enjoys sharing
+  projects, writing, photos, and videos. This site is built with Jekyll
+  and designed to feel like you’re peering through a rainy window.
+
+# URL settings. Leave baseurl blank when deploying to the root of a GitHub Pages site.
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+timezone: America/New_York
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Defaults for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: "Aryan"
+      comments: false
+
+# Plugins (none by default; can be extended later)
+plugins: []
