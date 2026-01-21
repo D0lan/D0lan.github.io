@@ -24,23 +24,13 @@ description: Welcome to Aryan's personal website — a rainy portal into neuromo
   <div class="card-grid">
     <div class="card" data-aos="fade-up">
       <h3>About</h3>
-      <p>Read about my background, interests and experience as a researcher in neuromorphic computing.</p>
+      <p>Read about my background, interests and experience as a researcher.</p>
       <a class="btn" href="{{ '/about' | relative_url }}">About me</a>
     </div>
     <div class="card" data-aos="fade-up" data-aos-delay="100">
       <h3>Projects</h3>
-      <p>Discover the research projects and personal endeavours I’ve been working on.</p>
+      <p>Discover the projects I’ve been working on.</p>
       <a class="btn" href="{{ '/projects' | relative_url }}">View projects</a>
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="200">
-      <h3>From the Blog</h3>
-      {% assign latest = site.posts | first %}
-      {% if latest %}
-        <p class="post-excerpt">{{ latest.excerpt | strip_html | truncate: 100 }}</p>
-        <a class="btn" href="{{ latest.url | relative_url }}">{{ latest.title }}</a>
-      {% else %}
-        <p>No posts yet. Check back soon!</p>
-      {% endif %}
     </div>
   </div>
 </section>
